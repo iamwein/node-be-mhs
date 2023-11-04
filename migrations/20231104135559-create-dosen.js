@@ -2,33 +2,24 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('nilai_mahasiswas', {
-      // id: {
-      //   allowNull: false,
-      //   autoIncrement: true,
-      //   type: Sequelize.INTEGER
-      // },
-      nim: {
-        type: Sequelize.STRING,
+    await queryInterface.createTable('dosens', {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
         primaryKey: true,
+        type: Sequelize.INTEGER
+      },
+      nidn: {
+        type: Sequelize.STRING
       },
       nama: {
         type: Sequelize.STRING
       },
-      tempat_lahir: {
+      jk: {
         type: Sequelize.STRING
       },
-      tanggal_lahir: {
-        type: Sequelize.DATE
-      },
-      program_studi: {
+      alamat: {
         type: Sequelize.STRING
-      },
-      kelas: {
-        type: Sequelize.STRING
-      },
-      ipk: {
-        type: Sequelize.FLOAT
       },
       createdAt: {
         allowNull: false,
@@ -41,6 +32,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('nilai_mahasiswas');
+    await queryInterface.dropTable('dosens');
   }
 };
