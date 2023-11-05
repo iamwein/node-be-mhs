@@ -1,3 +1,11 @@
-npx sequelize-cli model:generate --name dmatkul --attributes kodematkul:string,matkul:string,sks:integer,smt:integer
-npx sequelize-cli model:generate --name dosen --attributes nidn:string,nama:string,jk:string,alamat:string
-npx sequelize-cli model:generate --name data_ngajar --attributes id_dosen:integer,id_matkul:integer
+Front end: Html + css + jquery
+Backend: nodejs + expressjs
+Database: Postgres
+
+-- Install nodejs
+-- install postgress
+-- update password database di .env
+-- masuk ke directrory backend
+-- jalankan perintah `npm install` untuk install dependecies
+-- jalankan perintah `npm run db` untuk migration database
+-- jalankan perinta `npm start` untuk menjalankan program

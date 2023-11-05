@@ -10,12 +10,15 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      this.hasMany(models.ngajar, {
+        as: "matakuliah",
+        foreignKey: "kodematkul",
+      })
     }
   }
   dmatkul.init({
     kodematkul: DataTypes.STRING,
-    matkul: DataTypes.STRING(30),
+    matkul: DataTypes.STRING,
     sks: DataTypes.INTEGER,
     smt: DataTypes.INTEGER
   }, {

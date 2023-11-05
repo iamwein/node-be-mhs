@@ -3,15 +3,15 @@ const { hashPassword, comparePassword } = require("../security/bcrypt")
 const { generateToken } = require("../security/authentication");
 
 const createUser = async(req, res) => {
-    let {password, nama, email, telepon} = req.body
+    let {password, nama, username} = req.body
     const hash = hashPassword(password);
 
-    await User.findOne({where: {email}}).then(user => {
+    await User.findOne({where: {username}}).then(user => {
         if(user){
-            res.status(401).json({message: "Email has been registered. Please use another one!", statusCode: 400})
+            res.status(401).json({message: "username has been registered. Please use another one!", statusCode: 400})
         } else {
             User.create({
-                password: hash, nama, email, telepon
+                password: hash, nama, username
             }).then((user) => {
                 res.status(201).json({message: "Succes Create User", data: user, statusCode: 201})
             }).catch(error => {
@@ -19,15 +19,18 @@ const createUser = async(req, res) => {
                 res.status(500).json({message: process.env.ISE})
             })
         }
+    }).catch(error => {
+        console.log(error)
+        res.status(500).json({message: process.env.ISE})
     })
 }
 
 const userLogin = async(req, res) => {
-    const { email,  password } = req.body
+    const { username,  password } = req.body
 
-    await User.findOne({ where: { email } }).then(user => {
+    await User.findOne({ where: { username } }).then(user => {
         if (!user) {
-            const msg = "email tidak terdaftar!"
+            const msg = "username tidak terdaftar!"
             res.status(400).json({message: msg, statusCode:400})
         }
 
@@ -40,7 +43,7 @@ const userLogin = async(req, res) => {
         const data = {
             id: user.id,
             nama: user.nama,
-            username: user.email
+            username: user.username
         }
 
         const token = generateToken(data)
