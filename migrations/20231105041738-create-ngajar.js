@@ -10,10 +10,10 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       nidn_dosen: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       kodematkul: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -30,7 +30,7 @@ module.exports = {
       name: "nidn_fk",
       references: {
           table: "dosens",
-          field: "nidn"
+          field: "id"
       },
       onDelete: "cascade",
       onUpdate: "cascade"
@@ -41,7 +41,7 @@ module.exports = {
       name: "kodematkul_fk",
       references: {
           table: "dmatkuls",
-          field: "kodematkul"
+          field: "id"
       },
       onDelete: "cascade",
       onUpdate: "cascade"

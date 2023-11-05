@@ -21,8 +21,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   ngajar.init({
-    nidn_dosen: DataTypes.STRING,
-    kodematkul: DataTypes.STRING
+    nidn_dosen: DataTypes.INTEGER,
+    kodematkul: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'ngajar',

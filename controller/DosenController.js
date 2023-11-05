@@ -52,7 +52,7 @@ const editDosen = async(req, res) => {
 
 const deleteDosen = async(req, res) => {
     const id = req.params.id
-
+``
     await Dosen.destroy({where: {id}}).then(() => {
         response(200, "Deleted succesfully!", [], res)
     }).catch(error => {

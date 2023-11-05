@@ -17,15 +17,19 @@ const createDataPembelajaran = async(req, res) => {
 
 const getAllDataPembelajaran = async(req, res) => {
     await DataPembelajaran.findAll(
-    //     {
-    //     include: [
-    //         {
-    //             model: Dosen,
-    //             as: "dosen",
-    //             attributes: ["nama"],
-    //         }
-    //     ]
-    // }
+        {
+        include: [
+            {
+                model: Dosen,
+                as: "dosen",
+                attributes: ["nidn","nama"],
+            },
+            {
+                model: MataKuliah,
+                as: "matakuliah",
+            }
+        ]
+    }
     ).then(d => {
         response(200, "Success", d, res)
     }).catch(error => {
